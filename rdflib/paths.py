@@ -184,7 +184,7 @@ No vars specified:
 """)
 
 
-from rdflib.term import URIRef
+from rdflib.term import URIRef, Node
 
 
 # property paths
@@ -199,7 +199,7 @@ class Path(object):
         raise NotImplementedError()
 
     def __lt__(self, other):
-        if not isinstance(other, Path):
+        if not isinstance(other, (Path, Node)):
             raise TypeError('unorderable types: %s() < %s()' % (
                 repr(self), repr(other)))
         return repr(self) < repr(other)
